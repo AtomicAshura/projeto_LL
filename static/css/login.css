@@ -3,19 +3,36 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .login-container {
+    width: 100%;
     max-width: 400px;
-    margin: 60px auto;
+    margin: 0 auto;
     padding: 20px;
+    box-sizing: border-box;
     text-align: center;
 }
 
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+    }
+    .card {
+        padding: 20px 15px;
+    }
+    .tabs {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+}
 .logo img{
     width: 150px;
-    margin-bottom: 20px;
-    width: 150px;  /* Ajuste para o tamanho que preferir */
     height: auto;  /* Mantém a proporção original */
     display: block;
     margin: 0 auto 20px auto; /* Centraliza e dá espaçamento abaixo */
@@ -26,6 +43,8 @@ body {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tabs {
@@ -33,6 +52,7 @@ body {
     justify-content: space-around;
     margin-bottom: 20px;
     font-weight: bold;
+    flex-wrap: wrap;
 }
 
 .tabs span.active {
@@ -44,6 +64,11 @@ body {
 .tabs a {
     text-decoration: none;
     color: #555;
+    text-align: center;
+}
+
+form {
+    width: 100%;
 }
 
 form input {
@@ -53,6 +78,7 @@ form input {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
+    box-sizing: border-box;
 }
 
 form input:focus {
