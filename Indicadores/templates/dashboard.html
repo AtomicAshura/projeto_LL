@@ -3,6 +3,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Indicadores</title>
     <link rel="stylesheet" href="{% static 'css/indicadores.css' %}">
 </head>
@@ -19,27 +20,33 @@
 
     <div class="filter-bar">
         <form method="get">
-            <label for="start_date">De:</label>
-            <input type="date" name="start_date" value="{{ request.GET.start_date }}">
-            <label for="end_date">Até:</label>
-            <input type="date" name="end_date" value="{{ request.GET.end_date }}">
-            <button type="submit">Filtrar</button>
+            <div class="filter-group">
+                <label for="start_date">De:</label>
+                <input type="date" name="start_date" value="{{ request.GET.start_date }}" id="start_date">
+            </div>
+            <div class="filter-group">
+                <label for="end_date">Até:</label>
+                <input type="date" name="end_date" value="{{ request.GET.end_date }}" id="end_date">
+            </div>
+            <button type="submit" class="filter-button">Filtrar</button>
         </form>
     </div>
 
     <h2 class="section-title">Seus Indicadores</h2>
 
-    <div class="indicators-grid">
+    <div class="indicators-container">
         {% if indicadores %}
-            {% for indicador in indicadores %}
-                <div class="indicator-card">
-                    <h3>{{ indicador.nome }}</h3>
-                    <p><strong>{{ indicador.valor }}</strong></p>
-                    <small>{{ indicador.data_registro }}</small>
-                </div>
-            {% endfor %}
+            <div class="indicators-grid">
+                {% for indicador in indicadores %}
+                    <div class="indicator-card">
+                        <h3>{{ indicador.nome }}</h3>
+                        <p class="indicator-value">{{ indicador.valor }}</p>
+                        <small class="indicator-date">{{ indicador.data_registro }}</small>
+                    </div>
+                {% endfor %}
+            </div>
         {% else %}
-            <p>Nenhum indicador encontrado para esse período.</p>
+            <p class="no-indicators">Nenhum indicador encontrado para esse período.</p>
         {% endif %}
     </div>
 </body>

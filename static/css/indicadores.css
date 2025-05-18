@@ -1,58 +1,174 @@
+/* ESTILOS BASE PARA MOBILE FIRST */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f6f7fb;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
+/* BARRA SUPERIOR */
 .top-bar {
     background-color: #5c6bc0;
     color: white;
-    padding: 15px;
+    padding: 10px 15px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-info {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .logout-button {
     background-color: #d32f2f;
-    border: none;
     color: white;
-    padding: 8px 16px;
-    cursor: pointer;
+    border: none;
+    padding: 8px;
     border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
 }
 
+/* BARRA DE FILTROS */
 .filter-bar {
-    background-color: #ffffff;
-    padding: 10px 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    background-color: white;
+    padding: 10px 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+.filter-bar form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-bar label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filter-bar input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.filter-button {
+    padding: 10px;
+    background-color: #5c6bc0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* TÍTULO */
 .section-title {
     text-align: center;
-    margin: 20px 0;
+    margin: 15px 0;
+    color: #2c3e50;
+    font-size: 18px;
+    padding: 0 10px;
 }
 
+/* CONTAINER DE INDICADORES */
+.indicators-container {
+    padding: 0 10px 20px;
+}
+
+/* GRID DE INDICADORES */
 .indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 0 20px 40px;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 .indicator-card {
     background-color: white;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 8px;
+    padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
-    transition: transform 0.2s;
 }
 
-.indicator-card:hover {
-    transform: scale(1.02);
+.indicator-card h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.indicator-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}
+
+.indicator-date {
+    color: #7f8c8d;
+    font-size: 12px;
+}
+
+.no-indicators {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* MEDIA QUERIES PARA TELAS MAIORES (opcional) */
+@media (min-width: 600px) {
+    .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logout-button {
+        width: auto;
+        padding: 8px 16px;
+    }
+    
+    .filter-bar form {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
+    .filter-group {
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
+    }
+    
+    .filter-button {
+        margin-top: 0;
+        flex: 0 0 auto;
+    }
+    
+    .indicators-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .indicators-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
