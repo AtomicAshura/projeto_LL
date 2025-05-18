@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Indicadores</title>
+    <link rel="stylesheet" href="{% static 'css/indicadores.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="user-info">
+            <span>👤 Bem-vindo, {{ request.user.username }}</span>
+        </div>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">Sair</button>
+        </form>
+    </div>
+
+    <div class="filter-bar">
+        <form method="get">
+            <label for="start_date">De:</label>
+            <input type="date" name="start_date" value="{{ request.GET.start_date }}">
+            <label for="end_date">Até:</label>
+            <input type="date" name="end_date" value="{{ request.GET.end_date }}">
+            <button type="submit">Filtrar</button>
+        </form>
+    </div>
+
+    <h2 class="section-title">Seus Indicadores</h2>
+
+    <div class="indicators-grid">
+        {% if indicadores %}
+            {% for indicador in indicadores %}
+                <div class="indicator-card">
+                    <h3>{{ indicador.nome }}</h3>
+                    <p><strong>{{ indicador.valor }}</strong></p>
+                    <small>{{ indicador.data_registro }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum indicador encontrado para esse período.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Login - Dunas</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="{% static 'img/LOGOMARCA DUNAS.png' %}" alt="Logo Dunas">
+        </div>
+        <div class="card">
+            <div class="tabs">
+                <span class="active">Login</span>
+                <a href="{% url 'cadastro' %}">Registrar</a>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Seu usuário ou email" required>
+                <input type="password" name="password" placeholder="Sua senha" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

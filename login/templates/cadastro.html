@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class= "logo">
+            <img src="{% static 'img/LOGOMARCA DUNAS.png' %}" alt="Logo Dunas">
+        </div>
+        <div class="tabs">
+            <span class="active-tab">Registrar</span>
+            <a href="{% url 'login' %}" class="inactive-tab">Login</a>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
