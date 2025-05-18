@@ -118,3 +118,7 @@ LOGIN_URL= '/'
 LOGOUT_REDIRECT_URL= '/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.ngrok-free.app",
+]
