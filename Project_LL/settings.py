@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Indicadores',
     'login',
-    'widget_tweaks'
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

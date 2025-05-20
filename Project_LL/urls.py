@@ -23,7 +23,8 @@ from Project_LL.settings import BASE_DIR
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
-    path('dashboard/',include('Indicadores.urls'))
+    path('dashboard/',include('Indicadores.urls')),
+    path('api/indicadores/', include ('Indicadores.urls'))
 ]
 
 if settings.DEBUG:
