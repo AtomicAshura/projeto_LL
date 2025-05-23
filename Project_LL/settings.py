@@ -129,5 +129,5 @@ LOGOUT_REDIRECT_URL= '/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.ngrok-free.app",
+    "https://*.ngrok-free.app"
 ]
