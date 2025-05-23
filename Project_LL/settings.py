@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -64,11 +65,14 @@ WSGI_APPLICATION = 'Project_LL.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project_ll',
-        'USER':'root',
-        'PASSWORD': '32980123K@io',
-        'HOST':'localhost',
-        'PORT': '3306'
+        'NAME': config('MYSQL_DATABASE_NAME',default='Dunas$default'),
+        'USER':config("MYSQL_DATABASE_USER", default="Dunas"),
+        'PASSWORD': config("MYSQL_PASSWORD", default="32980123Estq"),
+        'HOST':config("MYSQL_HOSTNAME",default= "Dunas.mysql.pythonanywhere-services.com"),
+        'PORT': '',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 

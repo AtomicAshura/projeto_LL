@@ -1,0 +1,19 @@
+# Database file
+db.sqlite3
+
+# Environment variables (if using python-decouple)
+.env
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# Virtual environment directory
+venv/
+.venv/
+
+# Other common Django/Python ignores
+*.log
+.DS_Store
+.idea/  # Para usuários de PyCharm/IntelliJ
+*.sqlite3-journal
