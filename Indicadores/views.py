@@ -6,7 +6,9 @@ from datetime import datetime
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import IndicadorSerializer
+from rest_framework.parsers import MultiPartParser
+from .serializers import IndicadorSerializer, PlanilhaUploadSerializer
+import pandas as pd
 # Create your views here.
 
 @login_required(login_url='/login/')
@@ -54,3 +56,29 @@ class IndicadorAPI (APIView):
             serializer.save()
             return Response({'mensagem':'Indicador criado com sucesso'}, status= status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UploadPlanilhaAPI(APIView):
+    parser_classes = (MultiPartParser,)
+    
+    def post(self, request, format=None):
+        serializer = PlanilhaUploadSerializer(data=request.data)
+        if serializer.is_valid():
+            try:
+                result = serializer.save()
+                return Response({
+                    "status": "success",
+                    "message": f"Processadas {result['processed_rows']} linhas",
+                    "details": result['details']
+                }, status=200)
+            except Exception as e:
+                return Response({
+                    "status": "error",
+                    "message": str(e),
+                    "details": []
+                }, status=400)
+        
+        return Response({
+            "status": "error",
+            "message": serializer.errors,
+            "details": result
+        }, status=400)

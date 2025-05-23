@@ -1,10 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth.views import LogoutView
-from .views import IndicadorAPI
+from .views import IndicadorAPI, UploadPlanilhaAPI
 
 urlpatterns = [
+    # Frontend
     path("", views.dashboard, name="dashboard"),
-    path('logout/', LogoutView.as_view(next_page= '/'), name= 'logout'),
-    path('api/indicadores/',IndicadorAPI.as_view(), name='api-indicadores')
-]
+    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    ]

@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-!-#qmuf!xeo&^erkr7$jk#-s+*pxd8&%##47f*yer^q)o+50ti
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dunas.pythonanywhere.com']
+ALLOWED_HOSTS = ['dunas.pythonanywhere.com', 'localhost','127.0.0.1']
 
 
 # Application definition
@@ -63,8 +63,12 @@ WSGI_APPLICATION = 'Project_LL.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'project_ll',
+        'USER':'root',
+        'PASSWORD': '32980123K@io',
+        'HOST':'localhost',
+        'PORT': '3306'
     }
 }
 
@@ -105,9 +109,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-STATICFILES_DIRS = [BASE_DIR/ "static"]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -120,7 +122,7 @@ LOGIN_URL= '/'
 
 LOGOUT_REDIRECT_URL= '/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.ngrok-free.app",
